@@ -822,3 +822,6 @@ img {-webkit-user-drag:none}
 /* Keep image attribution in the media row of the four-row Home cards. */
 .home .chapter-media{display:block;min-width:0}.home .chapter-media .chapter-field{display:block}.home .chapter-media .card-credit{margin:.5rem 0 0}.home .panel h3,.home .panel>p{margin:0}
 .chapter-research-points{border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.5rem}.chapter-research-points ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem 1.5rem}.chapter-research-points li{min-width:0}.chapter-research-points a{display:block;padding:.5rem 0;line-height:1.5}.chapter-research-points a span{display:block;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase}@media(max-width:600px){.chapter-research-points ul{grid-template-columns:1fr}}
+
+/* Home dwelling plans: a quarter of their previous display width. */
+.home .dwelling-plan{width:25%;min-height:0;justify-self:center;align-self:start}.home .dwelling-plan img{width:100%;height:auto}
