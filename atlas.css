@@ -837,3 +837,8 @@ img {-webkit-user-drag:none}
  .home .dwelling-studies{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:85%;overflow-x:auto;scroll-snap-type:x proximity;overscroll-behavior-x:contain;padding-bottom:1rem}
  .home .dwelling-scroll-hint{display:block;font-size:.8rem;line-height:1.5;margin:0 0 1rem}
 }
+
+/* Construction section pairs the supplied wall/floor detail with its rationale. */
+.construction-spread > .construction-copy {grid-column:2;min-width:0}
+.construction-spread > .drawing-figure {grid-column:1;grid-row:1;align-self:start}
+@media (max-width:820px) {.construction-spread {display:block}}
