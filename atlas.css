@@ -823,5 +823,17 @@ img {-webkit-user-drag:none}
 .home .chapter-media{display:block;min-width:0}.home .chapter-media .chapter-field{display:block}.home .chapter-media .card-credit{margin:.5rem 0 0}.home .panel h3,.home .panel>p{margin:0}
 .chapter-research-points{border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1.5rem}.chapter-research-points ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem 1.5rem}.chapter-research-points li{min-width:0}.chapter-research-points a{display:block;padding:.5rem 0;line-height:1.5}.chapter-research-points a span{display:block;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase}@media(max-width:600px){.chapter-research-points ul{grid-template-columns:1fr}}
 
-/* Home dwelling plans: a quarter of their previous display width. */
-.home .dwelling-plan{width:25%;min-height:0;justify-self:center;align-self:start}.home .dwelling-plan img{width:100%;height:auto}
+
+/* Compare all three dwelling arrangements together; swipe the row on mobile. */
+.home .dwelling-studies{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,3vw,2.5rem);min-width:0}
+.home .dwelling-study{display:grid;grid-template-rows:auto auto 1fr auto;gap:1rem;min-width:0;border-top:1px solid var(--line);padding-top:1rem;scroll-snap-align:start;scroll-margin-top:1.5rem}
+.home .dwelling-study h3{font-size:clamp(1.15rem,2vw,1.6rem);line-height:1.2;margin:0}
+.home .dwelling-study .dwelling-plan{grid-column:auto;grid-row:auto;width:100%;min-height:0;aspect-ratio:1;margin:0}
+.home .dwelling-study .dwelling-plan img{width:100%;height:100%;object-fit:contain}
+.home .dwelling-study p{margin:0;line-height:1.6}
+.home .dwelling-study .dwelling-link{grid-column:auto;align-self:start;justify-self:start;padding:0}
+.home .dwelling-scroll-hint{display:none}
+@media(max-width:760px){
+ .home .dwelling-studies{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:85%;overflow-x:auto;scroll-snap-type:x proximity;overscroll-behavior-x:contain;padding-bottom:1rem}
+ .home .dwelling-scroll-hint{display:block;font-size:.8rem;line-height:1.5;margin:0 0 1rem}
+}
