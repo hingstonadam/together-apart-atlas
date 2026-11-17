@@ -899,3 +899,7 @@ body > footer { flex-wrap: wrap; gap: .75rem 2rem; line-height: 1.6; }
   .data-centre-journal .heat-row { grid-template-columns: minmax(0,1fr); gap: .4rem; }
   .data-centre-journal .heat-row > strong { text-align: left; }
 }
+
+/* Keep filled links readable despite the general page link colours. */
+.home .skip-link,
+.journal main a.action { color: var(--paper); background: var(--ink); }
