@@ -864,3 +864,33 @@ img {-webkit-user-drag:none}
  .editorial-field .j-chapter :is(h3,h4) {scroll-margin-top:6rem}
  .editorial-field .j-figure figcaption {max-width:100%}
 }
+
+/* Adapt: compact reading surfaces and touch-first controls. */
+@media (min-width:821px) and (max-width:1050px) {
+ .journal main:not(.exegesis-contents) {grid-template-columns:minmax(9rem,11rem) minmax(0,1fr);gap:1.5rem}
+ .journal .j-chapter {grid-template-columns:minmax(0,.08fr) minmax(0,1fr);column-gap:1rem}
+ .research-journal .network-workbench {grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:820px) {
+ .journal main:not(.exegesis-contents) {width:min(92%,48rem)}
+ .journal .index-toggle {min-height:44px;line-height:1.35}
+ .journal .index-rail a[data-chapter] {min-height:44px;align-items:center}
+ .journal .index-rail a[data-chapter]::before {align-self:center;margin-top:0}
+ .journal .chapter-nav a {display:inline-flex;align-items:center;min-height:44px}
+ .journal .drawing-figure figcaption a {display:inline-flex;align-items:center;min-height:44px}
+ .journal .j-title {font-size:clamp(2rem,7.5vw,3.5rem);overflow-wrap:break-word}
+ .network-breakdown select,.atlas-controls input,.atlas-filterbar select {font-size:1rem;min-height:44px}
+ .atlas-controls button,.atlas-filterbar button {min-height:44px}
+}
+@media (max-width:420px) {
+ .network-breakdown .plot {grid-template-columns:minmax(0,1fr)}
+ .network-breakdown #chart {width:min(100%,8rem)}
+ .journal .index-toggle .current-label {max-width:58%;overflow-wrap:anywhere}
+ .home .hero h1 {font-size:clamp(2.5rem,12vw,3.5rem)}
+}
+@media (max-width:820px) and (max-height:500px) {
+ .index-toggle:not([hidden]) + #index-links {max-height:55vh;max-height:55dvh}
+}
+@media (pointer:coarse) {
+ .network-controls button,.network-status button,.network-breakdown #legend button {min-height:44px}
+}
