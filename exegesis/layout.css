@@ -9,7 +9,7 @@
   padding-block: var(--reader-section);
 }
 .j-chapter {
-  grid-template-columns: minmax(0, var(--measure)) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   column-gap: 0;
 }
 .j-chapter > * { grid-column: 1; }
