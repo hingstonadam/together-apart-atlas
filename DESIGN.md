@@ -12,6 +12,8 @@ colors:
   strategy-define: "#a95d46"
   strategy-extend: "#687f70"
   strategy-mediate: "#516f8c"
+  annotation-clay: "#994f39"
+  annotation-sage: "#526b59"
 typography:
   display:
     fontFamily: "Montserrat, \"Helvetica Neue\", Arial, sans-serif"
@@ -70,8 +72,9 @@ spacing:
   stack: "1rem"
   panel-gap: "20px"
   home-gutter: "clamp(18px, 2.6vw, 46px)"
-  reader-gap: "clamp(1.25rem, 3vw, 3.5rem)"
-  reader-section: "clamp(2.5rem, 6vw, 6rem)"
+  reader-gap: "clamp(2rem, 4vw, 4rem)"
+  reader-section: "clamp(2.5rem, 5vw, 4rem)"
+  site-gap: "clamp(1.5rem, 3vw, 3rem)"
 components:
   button-primary:
     backgroundColor: "{colors.primary}"
@@ -120,10 +123,10 @@ components:
     textColor: "{colors.ink}"
     rounded: "{rounded.square}"
     padding: "1.25rem 0"
-  dwelling-accordion:
+  dwelling-study:
     textColor: "{colors.ink}"
     rounded: "{rounded.square}"
-    padding: "16px 4px"
+    padding: "1rem 0 0"
   research-preview:
     backgroundColor: "rgba(248,246,240,.96)"
     textColor: "{colors.ink}"
@@ -148,7 +151,7 @@ Controls are restrained and precise. Square edges, fine borders and explicit int
 - Square panels and controls, fine rules and visible keyboard focus.
 - Supplied drawings kept legible, proportional and available at full size.
 
-This document records the website at commit `c95e18b42bc5d4d2e3e1a48a31aa7f66ff923e68`, checked on 11 November 2026. It combines the implemented system with Adam's confirmed descriptive direction. It does not change the interface. Frontmatter names are documentation aliases for existing variables and repeated values; they do not imply an installed token library.
+This document records the implementation on the review branch at commit `75fed6594dd15a8fd648eca681e3b5e5ce36be09`, checked on 17 November 2026. Sources are `atlas.css`, the later exegesis-specific `exegesis/layout.css`, and current page markup. This is the review implementation, not a claim that it is deployed. It combines the implemented system with Adam's confirmed descriptive direction. It does not change the interface. Frontmatter names are documentation aliases for existing variables and repeated values; they do not imply an installed token library.
 
 ## Colors
 
@@ -163,6 +166,8 @@ The main palette is clay, ivory and ink. Research colours identify recorded rela
 
 - **DEFINE clay**, **EXTEND sage** and **MEDIATE slate** (`strategy-define`, `strategy-extend`, `strategy-mediate`): the three strategy colours used in the research network. The chart also has an existing categorical palette in its script; preserve those assignments when extending the chart.
 
+Annotation text uses **Annotation clay** and **Annotation sage** (`annotation-clay`, `annotation-sage`) on ivory. These darker text variants preserve the original strategy colours in drawings and the research network. Their measured contrast against ivory is 5.50:1 and 5.39:1 respectively.
+
 ### Neutral
 
 - **Ivory** (`ivory`): the page ground and ordinary control surfaces.
@@ -171,7 +176,7 @@ The main palette is clay, ivory and ink. Research colours identify recorded rela
 - **Tonal ground** (`tonal-ground`): selected-source backgrounds and quiet secondary areas.
 - **Muted ink** (`muted-ink`): supporting metadata and notes.
 
-**The Drawing Integrity Rule.** Preserve the complete proportions, annotations and colours of supplied drawings. Use a plain labelled slot until artwork is supplied.
+**The Drawing Integrity Rule.** Preserve the complete proportions, annotations and colours of supplied drawings. Use supplied artwork; omit unavailable media rather than publishing an empty image slot.
 
 **The Visible Choice Rule.** Pair colour with text, an underline, a border or a pressed state. Keep active filters visible and removable.
 
@@ -181,7 +186,8 @@ Montserrat is self-hosted from `assets/fonts/montserrat-latin.woff`, with Helvet
 
 - **Display:** the Home title uses the `display` token. On screens up to 720 px it uses `clamp(3.5rem, 13vw, 5.5rem)`.
 - **Chapter display:** chapter titles use `chapter-display`, usually uppercase. Its tighter tracking is an existing implementation value, distinct from Home.
-- **Body:** ordinary paragraphs use `body`; long manuscript paragraphs use `reading-body` and a measure of 64 characters.
+- **Body:** ordinary paragraphs use `body`; long manuscript paragraphs use `reading-body` and a measure of 68 characters. Other journal pages retain their 64-character base measure.
+- **Chapter hierarchy:** use one H1, section H2s and nested H3s. Section titles use `clamp(1.35rem, 2vw, 2rem)` with a 1.2 line height; subsection roles retain their existing sizes, including larger precedent and journal-study titles. At 820 px and below, chapter display uses `clamp(2.25rem, 9.5vw, 4rem)`.
 - **Source title:** matching-result headings use `source-title`, with an underlined link.
 - **Label:** Home chapter numbers use `label`, uppercase with tabular numerals. Figure labels are smaller (0.72 rem), while figure-caption prose is 0.78 rem with a 1.5 line height.
 - **Controls:** use the action, research-action, field and navigation roles for their respective components. Avoid applying display tracking to control labels.
@@ -191,8 +197,9 @@ Montserrat is self-hosted from `assets/fonts/montserrat-latin.woff`, with Helvet
 The site uses fluid grids and constrained reading measures. Spacing values in the frontmatter capture recurring implemented values, rather than a universal mathematical scale.
 
 - **Home:** full-width composition; a two-column hero places an opaque text area beside the render. At 720 px and below the image and text stack. Six chapter panels use three columns, two at 900 px and below, and one at 600 px and below.
-- **Reading pages:** the current container is the smaller of 91% and 88 rem. A sticky contents rail sits beside the manuscript. At 820 px and below it becomes a compact expandable index and the manuscript becomes a single column. Intermediate chapter layouts adjust between 821 and 1120 px.
+- **Reading pages:** the current container is the smaller of 91% and 88 rem. A sticky contents rail sits beside the manuscript. At 820 px and below it becomes a compact expandable index and the manuscript becomes a single column. The exegesis rail is 11 rem wide, reducing to 10 rem at 1000 px. Prose stays in one aligned reading column, with figures spanning the manuscript field. Precedent images and commentary pair above 1000 px and stack below. Contents use two columns, becoming one at 650 px.
 - **Research:** the network and chart sit alongside one another above 1050 px; below that they stack. At 820 px and below, or with a coarse pointer, the graph starts collapsed. Search and the matching-source list remain available.
+- **Data centre:** heat-recovery steps use numbered rows with separate number, title and explanation columns; below 820 px the explanation sits beneath its title. Metrics and energy-balance groups stack below 480 px. Shared section rhythm uses `reader-section`; Home panel spacing uses `site-gap`.
 - **Fields:** flexible labels and controls permit shrinking; inputs and selects fill their available width. At 420 px and below each network control occupies a complete row.
 - **Matching sources:** desktop rows separate number, title/finding and action. At 820 px and below they stack. Show twelve results initially and reveal twelve more per action.
 - **Drawings:** fit complete figures within the available width. Manuscript images use automatic height and full-size links. Home render cropping is separate from drawing placement.
@@ -221,7 +228,7 @@ Use a one-pixel rule for ordinary edges. Keep graph strokes, selected outlines a
 
 Home primary actions use clay with white text; secondary actions use an ivory ground, clay text and a clay border. Secondary hover becomes filled. Both use the square shape and action padding from the frontmatter.
 
-Research actions are smaller text controls with fine borders and a minimum 44 px height. Focus uses a visible clay outline. The current primary action has no separate hover fill.
+Research actions are smaller text controls with fine borders and a minimum 44 px height. Focus uses a visible clay outline. Primary hover and action active states use ink with ivory text.
 
 ### Chips
 
@@ -231,9 +238,9 @@ The ALL/ANY control appears when at least two network selections need combining.
 
 ### Cards / Containers
 
-Home chapter panels are single keyboard-accessible links with a chapter number, image slot, title and introduction. Their default shadow is none. Hover changes the border and heading colour; focus outlines the complete link.
+Home chapter panels are single keyboard-accessible links with a chapter number, supplied image with attribution where needed, title and introduction. Their default shadow is none. Hover changes the border and heading colour; focus outlines the complete link.
 
-Use the existing ivory labelled placeholders until supplied artwork is ready. Do not substitute instructional PNGs.
+Keep supplied images proportional and retain source credits. Do not add empty image slots or substitute instructional PNGs. The sidecar chapter specimen uses a real project asset.
 
 ### Inputs / Fields
 
@@ -243,7 +250,7 @@ Keep loading, retry and no-match feedback readable. Missing recorded research re
 
 ### Navigation
 
-The masthead uses the name at the left and main links at the right. The current page has a clay underline as well as colour. At 820 px and below, links sit on a full-width row beneath the name and wrap as needed.
+The masthead uses the name at the left and main links at the right. The current page has a clay underline as well as colour. At 820 px and below, all five links sit in a full-width five-column row beneath the name. At 480 px and below, the grid becomes three columns across two rows, retaining 44 px minimum link heights.
 
 Reading pages use a sticky contents rail with a compact toggle, Escape dismissal and a current-section label. Keep the skip-to-content and skip-to-matching-sources links.
 
@@ -259,9 +266,9 @@ Selecting a point inspects its finding; Explore related points is a separate act
 
 The graph has one sequential keyboard stop; arrow keys move between its points and tags. Enter or Space activates the focused item. Desktop supports dragging and previews. Compact layouts allow vertical scrolling over points and omit hover previews.
 
-### Dwelling accordions
+### Dwelling comparisons
 
-Native disclosure rows use square, ruled boundaries and explicit plus/minus states. Stacked homes opens first, followed by Side-by-side homes and XL dwelling. Each links to the relevant Proposal passage; the current floor-plan slots remain pending supplied drawings.
+Home presents Stacked homes, Side-by-side homes and XL dwelling together as three ruled columns, each with a supplied plan, description and Proposal link. At 760 px and below, the region scrolls horizontally with 85%-width items, proximity snapping and a visible scroll hint. Preserve the complete drawings within their square display fields. These are comparison articles, not accordions.
 
 ## Do's and Don'ts
 
@@ -275,7 +282,7 @@ Native disclosure rows use square, ruled boundaries and explicit plus/minus stat
 
 ### Don't
 
-- Don't generate substitute drawings or publish placeholder-instruction images.
+- Don't generate substitute drawings, add empty image slots or publish placeholder-instruction images.
 - Don't use shadows on every panel or introduce rounded cards as the default.
 - Don't communicate selection through colour alone.
 - Don't make a graph the only route to reading research.
