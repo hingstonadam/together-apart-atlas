@@ -1,5 +1,5 @@
 const rail = document.querySelector('.index-rail');
-const toggle = rail.querySelector('.index-toggle');
+const toggle = rail?.querySelector('.index-toggle');
 const compact = matchMedia('(max-width: 820px)');
 
 function closeIndex() {
@@ -10,6 +10,7 @@ function syncLayout() {
   closeIndex();
   toggle.hidden = !compact.matches;
 }
+if (rail && toggle) {
 syncLayout();
 compact.addEventListener('change', syncLayout);
 toggle.addEventListener('click', () => {
@@ -24,3 +25,5 @@ document.addEventListener('keydown', event => {
     toggle.focus();
   }
 });
+
+}
