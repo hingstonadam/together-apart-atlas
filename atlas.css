@@ -903,3 +903,6 @@ body > footer { flex-wrap: wrap; gap: .75rem 2rem; line-height: 1.6; }
 /* Keep filled links readable despite the general page link colours. */
 .home .skip-link,
 .journal main a.action { color: var(--paper); background: var(--ink); }
+
+/* Chapter actions share the site's minimum touch height. */
+.journal main a.action { display: inline-flex; align-items: center; min-height: 44px; }
