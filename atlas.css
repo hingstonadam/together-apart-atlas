@@ -836,3 +836,10 @@ img {-webkit-user-drag:none}
 .construction-spread > .construction-copy {grid-column:2;min-width:0}
 .construction-spread > .drawing-figure {grid-column:1;grid-row:1;align-self:start}
 @media (max-width:820px) {.construction-spread {display:block}}
+
+/* Hardening: allow long research titles, references and controls to wrap. */
+.editorial-field,.study-field,.network-controls>*,.network-workbench>*,.matching-list li,.exegesis-chapter,.index-rail,.masthead nav{min-width:0}
+.matching-list,.network-selection,#results,.j-chapter,.study-field,.exegesis-chapter{overflow-wrap:anywhere}
+.network-controls input,.network-controls select,.filters input,.filters select{max-width:100%;min-width:0}
+@media(max-width:820px){.network-controls input,.network-controls select,.filters input,.filters select{font-size:1rem}.masthead nav{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}

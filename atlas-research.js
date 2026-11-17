@@ -558,7 +558,7 @@ function resizeNetwork() {
   }, 160);
 }
 compactNetwork.addEventListener('change',resizeNetwork);
-new ResizeObserver(() => {
+if (typeof ResizeObserver !== 'undefined') new ResizeObserver(() => {
   if (!compactNetwork.matches && simulation && network.parentElement.clientWidth !== simulation.width) resizeNetwork();
 }).observe(network.parentElement);
 
@@ -586,7 +586,7 @@ byId('matching-list').addEventListener('click',event=>{
   renderNetwork();
   saveResearchState();
   byId('network-view').scrollIntoView({block:'start',behavior:'auto'});
-  simulation.points.find(node=>node.id===selectedId)?.el.focus({preventScroll:true});
+  simulation?.points.find(node=>node.id===selectedId)?.el.focus({preventScroll:true});
 });
 function renderFilterChips() {
   const chips=[...selectedNodes].map(([key,node])=>'<button type="button" data-remove-node="'+esc(key)+'" aria-label="Remove '+esc(node.label)+'">'+esc(node.label)+' ×</button>');
@@ -675,13 +675,21 @@ compactNetwork.addEventListener('change',()=>{
   byId('network-view').open=!compactNetwork.matches;
 });
 
+let researchLoading = false;
 async function loadResearch() {
+  if (researchLoading) return;
+  researchLoading = true;
+  byId('chart-status').textContent = 'Loading research collection…';
+  byId('status').textContent = '';
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 20000);
   try {
     const [snapshot,tags] = await Promise.all(['research.json','research-tags.json'].map(async file=>{
-      const response=await fetch('../'+file);
+      const response=await fetch('../'+file,{signal:controller.signal});
       if (!response.ok) throw Error('Missing collection');
       return response.json();
     }));
+    if (!Array.isArray(snapshot) || !Array.isArray(tags)) throw Error('Invalid collection');
     const published = new Map(snapshot.map(row=>[row.id,row]));
     records = tags.map(tag=>{
       const prior = published.get(tag.id);
@@ -703,7 +711,7 @@ async function loadResearch() {
     restoreResearchState();
     research();
     openSourceFromHash();
-  } catch { byId('status').innerHTML = 'The research collection could not load. <button type="button">Retry</button>'; byId('status').querySelector('button').onclick=loadResearch; }
+  } catch { byId('chart-status').textContent = 'Research collection unavailable. Check your connection and try again.'; byId('status').innerHTML = 'The research collection could not load. <button type="button">Retry</button>'; byId('status').querySelector('button').onclick=loadResearch; } finally { clearTimeout(timeout); researchLoading = false; }
 }
 loadResearch();
 
