@@ -879,7 +879,7 @@ body > footer { flex-wrap: wrap; gap: .75rem 2rem; line-height: 1.6; }
   .research-journal main, .data-centre-journal main { display: block; padding-top: 0; }
   .data-centre-journal .study-field [id] { scroll-margin-top: 6rem; }
   .masthead nav { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: .25rem; }
-  .masthead nav a { justify-content: center; font-size: clamp(.65rem,2.8vw,.85rem); padding-inline: 0; }
+  .masthead nav a { justify-content: center; font-size: .85rem; padding-inline: 0; }
   .data-centre-journal .network-flow li { grid-template-columns: 1.5rem minmax(0,1fr); gap: .5rem 1rem; }
   .data-centre-journal .network-flow p { grid-column: 2; }
   .home .resources .button { flex: 1 1 16rem; text-align: center; }
@@ -887,4 +887,15 @@ body > footer { flex-wrap: wrap; gap: .75rem 2rem; line-height: 1.6; }
 @media (max-width: 480px) {
   .data-centre-journal .dc-metrics { grid-template-columns: minmax(0,1fr); }
   .data-centre-journal .energy-balance { display: grid; grid-template-columns: minmax(0,1fr); justify-items: center; }
+}
+
+/* Final responsive and keyboard details. */
+.home .panel:focus-visible h3 { color: var(--clay); text-decoration: underline; text-underline-offset: .2em; }
+.data-centre-journal .dc-metrics strong { overflow-wrap: normal; font-variant-numeric: tabular-nums; }
+.data-centre-journal .network-flow > li > * { min-width: 0; }
+@media (max-width: 480px) {
+  .masthead nav { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0 .5rem; }
+  .masthead nav a { justify-content: flex-start; min-height: 44px; font-size: .85rem; }
+  .data-centre-journal .heat-row { grid-template-columns: minmax(0,1fr); gap: .4rem; }
+  .data-centre-journal .heat-row > strong { text-align: left; }
 }
