@@ -894,3 +894,21 @@ img {-webkit-user-drag:none}
 @media (pointer:coarse) {
  .network-controls button,.network-status button,.network-breakdown #legend button {min-height:44px}
 }
+
+/* Shared finishing details: retain catalogue typography and semantic palette. */
+:root {--muted-ink:#56574e;--focus-ring:var(--clay)}
+:focus-visible {outline-color:var(--focus-ring)}
+.journal .j-figure figcaption,.journal .chapter-image figcaption,.journal .manuscript-image figcaption {color:var(--muted-ink);font-size:.78rem;line-height:1.5;text-transform:none;letter-spacing:0}
+.journal .j-figure figcaption a {color:var(--clay);text-decoration:underline;text-underline-offset:.2em}
+.journal .chapter-nav a {text-underline-offset:.25em}
+.network-controls :is(input,select):focus-visible,.network-breakdown select:focus-visible {outline:2px solid var(--focus-ring);outline-offset:2px}
+.research-journal :is(button,input,select):disabled {cursor:not-allowed;opacity:.65}
+.research-journal .network-status {font-variant-numeric:tabular-nums}
+@media (hover:hover) {
+ .research-journal :is(.network-controls,.network-status,.selection-actions) button:not(:disabled):hover,
+ .research-journal #node-selections button:hover,.research-journal #more-matches:not(:disabled):hover {border-color:var(--clay);background:var(--light)}
+ .journal .j-figure figcaption a:hover,.journal .chapter-nav a:hover {text-decoration-thickness:2px}
+}
+@media (prefers-reduced-motion:reduce) {
+ .home .panel,.home .button,.journal a,.research-journal button {transition:none}
+}
