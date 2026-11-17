@@ -1,0 +1,124 @@
+/* Exegesis only: a steady text measure, with a wider field for the work. */
+.journal {
+  --reader-section: clamp(2.5rem, 5vw, 4rem);
+  --measure: 68ch;
+}
+.journal main {
+  grid-template-columns: 11rem minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  padding-block: var(--reader-section);
+}
+.j-chapter {
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: 0;
+}
+.j-chapter > * { grid-column: 1; }
+.j-chapter > :is(.j-title, .j-number, .j-spread, .j-unit, .j-figure, .precedent-studies, .drawing-register) { grid-column: 1 / -1; }
+.j-title { margin-bottom: 0; text-wrap: balance; }
+.j-chapter :is(h3, h4) { text-wrap: balance; }
+.j-chapter h3 { margin: var(--reader-section) 0 .75rem; line-height: 1.2; }
+.j-chapter h4 { margin: 2rem 0 .5rem; line-height: 1.35; }
+.j-chapter p { margin: .5rem 0 1rem; }
+.j-chapter .j-lead { max-width: 52ch; margin-bottom: 1.5rem; }
+.j-question { max-width: 52ch; margin: 1rem 0 1.5rem; }
+.j-spread, .j-unit { grid-template-columns: subgrid; }
+.j-spread > *, .j-unit > * { grid-column: 1; min-width: 0; }
+.j-spread > p, .j-unit > p { grid-column: 1; }
+.j-spread > figure, .j-unit > figure, #reflection .j-unit > figure {
+  grid-column: 1 / -1; grid-row: auto;
+}
+.j-figure { margin: 1.5rem 0 var(--reader-section); }
+.j-figure figcaption { max-width: 80ch; margin-top: .75rem; }
+.j-figure img { display: block; width: 100%; height: auto; }
+.construction-copy { max-width: var(--measure); }
+.journal-studies { padding-top: 1.5rem; border-top: 1px solid var(--line); }
+.journal-study .j-enlarge { height: auto; padding: .5rem; }
+.journal-study img { height: auto; }
+.journal-figure-grid { align-items: start; gap: 2rem; }
+.j-chapter > .journal-studies { margin: 2rem 0 var(--reader-section); }
+.journal-studies .journal-study { margin: 0; }
+.precedent-studies { margin-block: 2rem var(--reader-section); }
+.precedent-study {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  column-gap: 2rem;
+  align-items: start;
+  padding-block: 2rem 3rem;
+}
+.precedent-study > :is(.eyebrow, h4) { grid-column: 1 / -1; }
+.precedent-study > h4 { margin: .25rem 0 1.5rem; }
+.precedent-study > figure { grid-column: 1; grid-row: 3 / span 3; margin: 0; }
+.precedent-study > :is(.precedent-legend, .precedent-reading) { grid-column: 2; }
+.precedent-legend { gap: .5rem; margin-bottom: 1rem; }
+.precedent-credit { margin-top: .75rem; overflow-wrap: anywhere; }
+.journal .chapter-nav { gap: .5rem 1.5rem; align-items: start; }
+.chapter-nav a { display: flex; align-items: center; min-height: 44px; }
+.journal .index-rail a[data-chapter] { min-height: 44px; align-items: center; }
+.journal .index-rail a[data-chapter]::before { align-self: center; margin-top: 0; }
+.exegesis-contents > p { max-width: var(--measure); }
+.exegesis-chapter-grid { gap: 2.5rem 2rem; margin-top: 2.5rem; }
+.exegesis-chapter {
+  display: grid;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
+  align-content: start;
+  gap: .75rem;
+  color: var(--ink);
+}
+.journal main .exegesis-chapter { color: var(--ink); }
+.exegesis-chapter h2 { margin: 0; line-height: 1.15; text-wrap: balance; }
+.exegesis-chapter > p { margin: 0; line-height: 1.6; }
+.exegesis-chapter > .eyebrow { color: var(--clay); }
+.exegesis-chapter img { height: auto; max-height: none; margin: .5rem 0 0; }
+.exegesis-chapter .card-credit { margin: .5rem 0 0; }
+.exegesis-chapter .chapter-media { align-self: start; }
+.exegesis-chapter:is(:hover, :focus-visible) h2 { color: var(--clay); text-decoration: underline; text-underline-offset: .2em; }
+@media (max-width: 1000px) {
+  .journal main { grid-template-columns: 10rem minmax(0, 1fr); gap: 2rem; }
+  .precedent-study { display: block; }
+  .precedent-study > figure { max-width: 36rem; margin-bottom: 1.5rem; }
+}
+@media (max-width: 820px) {
+  .journal main { display: block; padding-top: 0; }
+  .journal main.exegesis-contents { padding-top: 2rem; }
+  .j-chapter, .j-unit, .j-spread { display: block; }
+  .j-title { font-size: clamp(2.25rem, 9.5vw, 4rem); }
+  .index-rail { top: 0; }
+  .index-toggle { min-height: 52px; }
+  .index-toggle[hidden] { display: none; }
+  .journal-figure-grid { grid-template-columns: 1fr; }
+  .exegesis-chapter-grid { gap: 2rem 1.5rem; }
+}
+@media (max-width: 650px) {
+  .exegesis-chapter-grid { grid-template-columns: 1fr; }
+  .exegesis-chapter { gap: .5rem; }
+  .journal .chapter-nav { display: grid; }
+}
+
+
+/* Keep linked passages clear of the compact chapter index. */
+.j-chapter [id] { scroll-margin-top: 1.5rem; }
+.exegesis-chapter > *, .precedent-study > * { min-width: 0; }
+.j-chapter :is(h3, h4), .chapter-nav a { overflow-wrap: anywhere; }
+@media (max-width: 820px) {
+  .j-chapter [id] { scroll-margin-top: 6rem; }
+}
+
+/* Semantic heading levels retain their established editorial roles. */
+.journal { --annotation-sage: #526b59; --annotation-clay: #994f39; }
+.j-chapter .chapter-section-title {
+  font-size: clamp(1.35rem, 2vw, 2rem); letter-spacing: -.04em;
+  margin: var(--reader-section) 0 .75rem; line-height: 1.2; text-wrap: balance;
+}
+.j-chapter .chapter-subsection-title {
+  font-size: 1rem; letter-spacing: normal;
+  margin: 2rem 0 .5rem; line-height: 1.35; text-wrap: balance;
+}
+.journal-studies .chapter-subsection-title {
+  font-size: clamp(1.2rem, 2vw, 1.75rem); line-height: 1.25;
+  margin: .4rem 0 .75rem; letter-spacing: -.025em;
+}
+.precedent-study > :is(.chapter-section-title, .chapter-subsection-title) { grid-column: 1 / -1; }
+.precedent-study > .chapter-subsection-title {
+  font-size: 1.4rem; letter-spacing: normal; margin: .25rem 0 1.5rem;
+}
