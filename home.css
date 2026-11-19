@@ -20,8 +20,9 @@
   min-height: clamp(34rem, 76svh, 54rem);
   margin: 0;
   align-items: end;
-  background: var(--light);
-  color: var(--ink);
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--paper);
 }
 
 .home .hero img {
@@ -35,16 +36,27 @@
   z-index: 0;
 }
 
+.home .hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(0deg, rgb(22 20 16 / .76), transparent 76%),
+    linear-gradient(90deg, rgb(22 20 16 / .54), transparent 76%);
+  pointer-events: none;
+}
+
 .home .hero figcaption {
   position: relative;
-  z-index: 1;
-  grid-column: 1;
+  z-index: 2;
+  grid-area: 1 / 1;
   justify-self: start;
   align-self: end;
   width: min(100%, 39rem);
   padding: clamp(1.25rem, 4vw, 3.5rem) var(--home-gutter);
-  background: var(--paper);
-  color: var(--ink);
+  background: none;
+  color: inherit;
 }
 
 .home .hero h1 {
@@ -56,7 +68,8 @@
 
 .home .hero h1 em {
   padding-left: .18em;
-  color: var(--clay);
+  color: var(--paper);
+  color: color-mix(in srgb, var(--paper) 82%, var(--clay));
 }
 
 .home .hero .subtitle {
@@ -67,6 +80,31 @@
 .home .hero .intro-copy {
   margin-top: 1rem;
   max-width: 38ch;
+}
+
+/* Let the image move more slowly than the page while the cover exits. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .home .hero {
+      view-timeline-name: --cover;
+      view-timeline-axis: block;
+    }
+
+    .home .hero img {
+      animation: cover-drift linear both;
+      animation-timeline: --cover;
+      animation-range: exit 0% exit 100%;
+    }
+
+    @keyframes cover-drift {
+      from { transform: translateY(0); }
+      to { transform: translateY(12%); }
+    }
+  }
+}
+
+.home .hero .primary:focus-visible {
+  outline-color: var(--paper);
 }
 
 .home .home-introduction {
@@ -190,21 +228,20 @@
 
 @media (max-width: 760px) {
   .home .hero {
-    min-height: 0;
-    align-items: start;
+    min-height: clamp(32rem, 75svh, 42rem);
   }
 
   .home .hero img {
-    position: static;
-    grid-area: 1 / 1;
-    height: auto;
-    aspect-ratio: 3 / 2;
+    object-position: 57% center;
+  }
+
+  .home .hero::after {
+    background: linear-gradient(0deg, rgb(22 20 16 / .86), rgb(22 20 16 / .6) 50%, transparent 90%);
   }
 
   .home .hero figcaption {
-    grid-row: 2;
     width: 100%;
-    padding-block: 1.6rem 2rem;
+    padding-block: 2rem 2.5rem;
   }
 
   .home .hero h1 {
