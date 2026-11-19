@@ -906,3 +906,143 @@ body > footer { flex-wrap: wrap; gap: .75rem 2rem; line-height: 1.6; }
 
 /* Chapter actions share the site's minimum touch height. */
 .journal main a.action { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* Shared editorial layout */
+:root {
+  --editorial-gutter: clamp(1.25rem, 5vw, 5rem);
+  --editorial-width: 90rem;
+  --editorial-heading: clamp(2.4rem, 5.1vw, 5rem);
+}
+
+body > .masthead {
+  position: relative;
+  z-index: 5;
+  padding: .85rem var(--editorial-gutter);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+:is(.home, .journal) .masthead nav a:is(:hover, [aria-current]) {
+  color: var(--clay);
+  text-decoration: underline;
+}
+
+.masthead .mobile-menu {
+  display: none;
+}
+
+.journal main {
+  width: min(calc(100% - 2 * var(--editorial-gutter)), var(--editorial-width));
+}
+
+.journal :is(.j-title, .exegesis-contents h1, .study-field h1, .about-profile h1) {
+  font-size: var(--editorial-heading);
+  font-weight: 600;
+  letter-spacing: -.06em;
+  line-height: 1;
+  text-transform: none;
+  text-wrap: balance;
+}
+
+.journal .j-title {
+  border-color: var(--line);
+}
+
+.journal .exegesis-chapter-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--site-gap);
+}
+
+.journal .exegesis-chapter {
+  color: var(--ink);
+}
+
+.journal .exegesis-chapter:hover h2 {
+  color: var(--clay);
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+body > footer,
+.home > footer {
+  width: auto;
+  margin-inline: var(--editorial-gutter);
+  padding-block: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+footer .footer-home {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--clay);
+}
+
+@media (max-width: 900px) {
+  .journal .exegesis-chapter-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  body > .masthead {
+    flex-direction: row;
+    align-items: center;
+    padding-block: .5rem;
+  }
+
+  .masthead > nav,
+  .masthead .mobile-menu:not([open]) nav {
+    display: none;
+  }
+
+  .masthead .mobile-menu {
+    display: block;
+    margin: 0;
+    border: 0;
+  }
+
+  .masthead .mobile-menu summary {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    min-height: 44px;
+    padding: .4rem .25rem;
+    font-size: .9rem;
+    font-weight: 650;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .masthead .mobile-menu summary::after {
+    content: "+";
+    color: var(--clay);
+  }
+
+  .masthead .mobile-menu[open] summary::after {
+    content: "−";
+  }
+
+  .masthead .mobile-menu[open] nav {
+    position: absolute;
+    inset: 100% 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: .5rem var(--editorial-gutter) 1rem;
+    border-block: 1px solid var(--line);
+    background: var(--paper);
+  }
+
+  .masthead .mobile-menu nav a {
+    justify-content: start;
+    padding-inline: .25rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .journal .exegesis-chapter-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
