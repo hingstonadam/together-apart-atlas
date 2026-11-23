@@ -114,7 +114,7 @@ Prioritise substantive Australian papers, reports and documented built projects.
 
 ## Site navigation and exegesis
 
-Keep the four main pages in order — Home, Exegesis, Research and About. The Research navigation item opens the atlas dashboard. The Research panel on Home opens chapter 02 of the exegesis. Link each exegesis contents item to its corresponding chapter subpage.
+Keep the six main navigation items in order — Home, Exegesis, Research, Data centre, Poster and About. The data centre and poster pages support the housing argument and do not replace it. The Research navigation item opens the atlas dashboard. The Research panel on Home opens chapter 02 of the exegesis. Link each exegesis contents item to its corresponding chapter subpage.
 
 Exegesis opens as a compact contents page with six individually addressable chapters: Position, Research, Design approach, Development, Proposal and Reflection. Do not restore a continuous-manuscript option; Adam removed it on 15 November 2026. Include relevant project images, captions and further reading drawn from the atlas. Keep draft production notes and private source links out of the public document.
 
@@ -137,7 +137,7 @@ Arrange six chapter panels in three columns and two rows on wide screens, reduci
 
 Make each panel one keyboard-accessible link with a visible focus state. Keep titles and introductions as selectable text outside the images. Verify that the Research panel opens chapter 02 and the Research navigation item opens the atlas dashboard.
 
-Close Home with a split layout. Place one supplied project image beside the heading **Ways of living together, apart** and three ruled accordion rows for Stacked homes, Side-by-side homes and XL dwelling. Open Stacked homes by default. Draw each description from the current Proposal chapter and finish with an **Explore the proposal** link to chapter 05. On narrow screens, stack the image above the text.
+Close Home with the **Ways of living together, apart** section: three ruled columns for Stacked homes, Side-by-side homes and XL dwelling, each with a supplied plan, a description drawn from the current Proposal chapter and a link to the matching Proposal section, followed by an **Explore the proposal** link to chapter 05. On narrow screens the columns scroll horizontally with a visible hint. Adam confirmed this layout on 23 November 2026, replacing the earlier accordion brief.
 
 ### Supplied images only
 
@@ -147,7 +147,7 @@ Preserve the proportions, annotations and credits of supplied drawings. Fit the 
 
 ## Website drawing files
 
-The published website is maintained in `hingstonadam/together-apart-atlas` on GitHub. Its static structure (`index.html`, `atlas.css`, `atlas.js`, chapter directories and `assets/`) is the authority for website code.
+The published website is maintained in `hingstonadam/together-apart-atlas` on GitHub. Its static structure (`index.html`, `atlas.css`, chapter directories and `assets/`) is the authority for website code.
 
 The local asset workspace is `C:\Users\adamh\OneDrive - University of Adelaide\Architecture\1. PROJECTS\(M) Graduate Project\HousingResearchAtlas\Website`.
 

@@ -38,7 +38,7 @@
   align-items: center;
   min-height: 44px;
   color: var(--clay);
-  font-size: .9rem;
+  font-size:var(--fs-body-sm);
   font-weight: 600;
   text-underline-offset: .3em;
   text-decoration-thickness: 1px;
@@ -93,10 +93,10 @@
 .about-connect .social-links a:hover { color: var(--clay); }
 .about-connect .social-links a:hover span { text-decoration: underline; text-underline-offset: .25em; }
 .about-connect .social-links svg { width: 1.3rem; height: 1.3rem; color: var(--clay); }
-.about-connect .social-links span { font-size: .9rem; line-height: 1.4; }
+.about-connect .social-links span { font-size:var(--fs-body-sm); line-height: 1.4; }
 .about-connect .social-links small {
   color: var(--clay);
-  font-size: .75rem;
+  font-size:var(--fs-label);
   line-height: 1.5;
   letter-spacing: 0;
   text-transform: none;

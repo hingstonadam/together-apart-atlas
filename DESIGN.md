@@ -250,7 +250,7 @@ Keep loading, retry and no-match feedback readable. Missing recorded research re
 
 ### Navigation
 
-The masthead uses the name at the left and main links at the right. The current page has a clay underline as well as colour. At 820 px and below, all five links sit in a full-width five-column row beneath the name. At 480 px and below, the grid becomes three columns across two rows, retaining 44 px minimum link heights.
+The masthead uses the name at the left and main links at the right. The current page has a clay underline as well as colour. At 820 px and below, the six links collapse into the Menu disclosure beneath the name (verify the exact breakpoint behaviour in `atlas.css`), retaining 44 px minimum link heights.
 
 Reading pages use a sticky contents rail with a compact toggle, Escape dismissal and a current-section label. Keep the skip-to-content and skip-to-matching-sources links.
 
@@ -286,4 +286,4 @@ Home presents Stacked homes, Side-by-side homes and XL dwelling together as thre
 - Don't use shadows on every panel or introduce rounded cards as the default.
 - Don't communicate selection through colour alone.
 - Don't make a graph the only route to reading research.
-- Don't treat older unused CSS or atlas.js as the active Research implementation.
+- Don't reintroduce the removed prototype CSS or `atlas.js`; the active Research implementation is `atlas-research.js`.

@@ -11,7 +11,7 @@ A hand-written static website — no framework, no package manager, no build ste
 | Path | Purpose |
 | --- | --- |
 | `index.html`, `home.css` | Home landing page |
-| `atlas.css`, `atlas.js` | Shared styles and site behaviour |
+| `atlas.css` | Shared styles (type scale tokens `--fs-label`, `--fs-small`, `--fs-body-sm`, `--fs-lead`, `--fs-title` are defined in `:root`) |
 | `research/index.html`, `atlas-research.js` | Research dashboard: chart, filters and entry list |
 | `research.json` | Published snapshot of every active row in the 100 Points of Research Notion database |
 | `research-tags.json` | Project Relevance and Design Strategy tags, keyed by stable Notion page ID |

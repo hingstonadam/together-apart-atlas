@@ -364,7 +364,7 @@
       "Don't use shadows on every panel or introduce rounded cards as the default.",
       "Don't communicate selection through colour alone.",
       "Don't make a graph the only route to reading research.",
-      "Don't treat older unused CSS or atlas.js as the active Research implementation."
+      "Don't reintroduce the removed prototype CSS or atlas.js; the active Research implementation is atlas-research.js."
     ]
   }
 }

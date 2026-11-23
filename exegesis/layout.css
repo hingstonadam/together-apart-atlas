@@ -120,5 +120,5 @@
 }
 .precedent-study > :is(.chapter-section-title, .chapter-subsection-title) { grid-column: 1 / -1; }
 .precedent-study > .chapter-subsection-title {
-  font-size: 1.4rem; letter-spacing: normal; margin: .25rem 0 1.5rem;
+  font-size:var(--fs-title); letter-spacing: normal; margin: .25rem 0 1.5rem;
 }
